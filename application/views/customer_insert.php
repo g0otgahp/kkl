@@ -68,7 +68,7 @@
             <td height="50" colspan="4" align="right"><button type="input" class="md-btn md-btn-small md-btn-success md-btn-wave-light">บันทึกข้อมูลลูกค้า</button></td>
           </tr>
         </table>
-        <?php echo form_close()?>
+        <?php echo form_close()?>    
       </div>
     </div>
   </div>

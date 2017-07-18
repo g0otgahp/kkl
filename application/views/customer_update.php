@@ -74,3 +74,50 @@
 </div>
 </div>
 </div>
+
+
+<div id="page_content_inner" class="hierarchical_show">
+  <h2>เอกสาร</h2>
+  <div class="md-card ">
+    <div class="md-card-content">
+      <div class="uk-overflow-container uk-margin-bottom">
+        <div class="md-card">
+          <div class="md-card-content">
+            <?php echo form_open_multipart('Customer/document_insert')?>
+            <table>
+            <input type="file" name="document_name" required="required"/>
+            <input type="hidden" name="customer_id" id="customer_id" value="<?php echo $customer[0]['customer_id']?>"/>
+            <button type="input" class="md-btn md-btn-small md-btn-primary md-btn-wave-light uk-margin-left">เพิ่มเอกสาร</button>
+            <tr>
+              <td><font color="red">*ไฟล์อัพโหลดต้องไม่เกิน 2 MB</font></td>
+            </tr>
+            </table>
+            <?php echo form_close()?>
+            <table class="uk-table uk-table-align-vertical uk-table-nowrap tablesorter tablesorter-altair" id="ts_pager_filter">
+          <thead>
+            <tr>
+              <th><div align="center">ลำดับที่</div></th>
+              <th><div align="center">เอกสาร</div></th>
+              <th><div align="center">จัดการข้อมูล</div></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php $i = 1 ?>
+            <?php foreach($document as $document){ ?>
+            <tr>
+              <td align="center"><?php echo $i ?></td>
+              <td><a href="<?php echo BASE_URL('uploads/document/'.$document['document_link'])?>" target="_blank"><?php echo $document['document_name']?></a></td>
+              <td align="center">
+                <a href="<?php echo site_url('home/document_delete')?>/<?php echo $document['document_id']?>" onclick="return confirm('ต้องการลบข้อมูล?')"><button type="button" class="md-btn md-btn-small md-btn-danger md-btn-wave-light">ลบข้อมูล</button></a>
+              </td>
+            </tr>
+            <?php $i++ ?>
+            <?php } ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

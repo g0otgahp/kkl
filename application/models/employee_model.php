@@ -31,7 +31,21 @@ class Employee_model extends CI_Model {
 	}
 
 
-
+	public function document_detail($employee_id)
+	{
+		$this->db->where('employee_id',$employee_id);
+		$query = $this->db->get('document');
+		return $query->result_array();
+	}
+	public function document_insert($input)
+	{
+		$this->db->insert('document',$input);
+	}
+	public function document_delete($document_id)
+	{
+		$this->db->where('document_id',$document_id);
+		$this->db->delete('document');
+	}
 
 
 

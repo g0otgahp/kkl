@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2017 at 11:14 AM
+-- Generation Time: Jul 18, 2017 at 10:03 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -71,11 +71,12 @@ INSERT INTO `billing` (`billing_id`, `billing_date`, `billing_group`, `billing_c
 (15, '2017-04-25', '2017-04', '20170407', '21ee23', 1, '2017-04-25', 3),
 (16, '2017-04-28', '2017-04', '20170409', 'edfrgthy', 1, '2017-04-28', 3),
 (17, '2017-04-28', '2017-04', '20170409', '3456', 1, '2017-04-28', 3),
-(18, '2017-05-31', '2017-05', '20170501', '', 5, '0000-00-00', 0),
-(19, '2017-05-31', '2017-05', '20170501', '', 5, '0000-00-00', 0),
-(20, '2017-05-31', '2017-05', '20170503', 'KKL190517', 5, '2017-05-31', 3),
+(20, '2017-05-31', '2017-05', '20170503', 'KKL190517', 5, '2017-05-31', 0),
 (21, '2017-05-31', '2017-05', '20170503', 'KKL210617', 5, '2017-05-31', 3),
-(22, '2017-06-01', '2017-06', 'IN001-0660', 'KKL220617', 5, '2017-06-01', 3);
+(22, '2017-06-01', '2017-06', 'IN001-0660', 'KKL220617', 5, '2017-06-01', 3),
+(23, '2017-07-05', '2017-07', 'IN001-0760', 'KKL230617', 5, '2017-07-05', 3),
+(24, '2017-07-05', '2017-07', 'IN002-0760', 'KKL250717', 1, '2017-07-05', 3),
+(25, '2017-07-05', '2017-07', 'IN003-0760', 'KKL173117', 1, '2017-07-05', 3);
 
 -- --------------------------------------------------------
 
@@ -190,7 +191,32 @@ INSERT INTO `district` (`district_id`, `province_id`, `district_name`, `district
 (2, 2, 'aaaaaa', 'bbbb'),
 (3, 1, 'sss', 'ffffff'),
 (4, 1, 'hdyhdty', 'uyghuik'),
-(5, 3, 'ในเมือง', 'ในเมือง');
+(5, 3, 'ในเมือง', 'ในเมือง'),
+(6, 2, 'ในเมือง', 'บริษัท bbb จำกัด');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `document`
+--
+
+CREATE TABLE `document` (
+  `document_id` int(11) NOT NULL,
+  `document_name` varchar(200) NOT NULL,
+  `document_link` varchar(100) NOT NULL,
+  `customer_id` int(11) NOT NULL DEFAULT '0',
+  `employee_id` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `document`
+--
+
+INSERT INTO `document` (`document_id`, `document_name`, `document_link`, `customer_id`, `employee_id`) VALUES
+(31, 'แบบใบลาป่วย ลากิจ ฯ.pdf', '20170718141020.pdf', 1, 0),
+(35, 'แบบใบลาป่วย ลากิจ ฯ.pdf', '20170718184738.pdf', 0, 4),
+(36, 'images.jpg', '20170718184819.jpg', 0, 4),
+(37, 'flat_person1-300x74-1.png', '20170718184918.png', 0, 5);
 
 -- --------------------------------------------------------
 
@@ -203,6 +229,7 @@ CREATE TABLE `employee` (
   `employee_name` varchar(100) NOT NULL,
   `employee_idcard` varchar(15) NOT NULL,
   `employee_tel` varchar(15) NOT NULL,
+  `employee_tel2` varchar(15) NOT NULL,
   `employee_birthday` date NOT NULL,
   `employee_address` text NOT NULL,
   `employee_status` int(11) NOT NULL
@@ -212,10 +239,10 @@ CREATE TABLE `employee` (
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`employee_id`, `employee_name`, `employee_idcard`, `employee_tel`, `employee_birthday`, `employee_address`, `employee_status`) VALUES
-(3, 'สมชาย ประธาอุดม', '124758875646', '0845748572', '0000-00-00', '989/121', 0),
-(4, 'ปลาวาฬ ใจดี', '1409901128441', '0804805243', '2017-02-19', 'หลัง 7-11', 0),
-(5, 'สมชาย', '14099011111', '0801111125', '2017-05-01', '333/444', 0);
+INSERT INTO `employee` (`employee_id`, `employee_name`, `employee_idcard`, `employee_tel`, `employee_tel2`, `employee_birthday`, `employee_address`, `employee_status`) VALUES
+(3, 'สมชาย ประธาอุดม', '124758875646', '0845748572', '', '0000-00-00', '989/121', 0),
+(4, 'ปลาวาฬ ใจดี', '1409901128441', '0804805243', '', '2017-02-19', 'หลัง 7-11', 0),
+(5, 'สมชาย', '14099011111', '0801111125', '', '2017-05-01', '333/444', 0);
 
 -- --------------------------------------------------------
 
@@ -323,15 +350,15 @@ INSERT INTO `shipment` (`shipment_id`, `shipment_date_make`, `shipment_date`, `s
 (11, '0000-00-00', '2017-04-30', '3456', 5, 43535, 43543, 0, 1, 2, 1, 3, 454, 4546, 1, 1),
 (13, '2017-05-30', '2017-05-30', 'KKL235617', 1, 0, 0, 0, 0, 0, 1, 2, 0, 2000, 1, 1),
 (14, '2017-05-31', '2017-05-31', 'KKL2017000851', 2, 0, 0, 0, 0, 0, 1, 3, 0, 6000, 1, 2),
-(15, '2017-05-31', '2017-05-31', 'KKL170531120957', 1, 0, 0, 0, 0, 0, 1, 3, 0, 6000, 1, 1),
+(15, '2017-05-31', '2017-05-31', 'KKL170531120957', 1, 0, 0, 0, 0, 0, 1, 3, 0, 6000, 1, 2),
 (16, '2017-05-31', '2017-05-24', 'KKL1617', 2, 0, 0, 0, 0, 0, 1, 2, 0, 2000, 1, 1),
-(17, '2017-05-31', '2017-05-25', 'KKL173117', 1, 0, 0, 0, 0, 0, 1, 2, 0, 2000, 1, 2),
+(17, '2017-05-31', '2017-05-25', 'KKL173117', 1, 0, 0, 0, 0, 0, 1, 2, 0, 2000, 1, 5),
 (18, '2017-05-31', '2017-05-20', 'KKL180517', 2, 0, 0, 0, 0, 0, 1, 3, 0, 6000, 1, 1),
 (19, '2017-05-03', '2017-05-31', 'KKL190517', 1, 0, 0, 0, 0, 0, 5, 2, 0, 3000, 1, 2),
 (20, '2017-05-31', '2017-06-01', 'KKL200517', 5, 0, 0, 0, 0, 0, 1, 2, 0, 2000, 1, 2),
-(21, '2017-06-01', '2017-06-02', 'KKL210617', 7, 0, 0, 0, 0, 0, 5, 2, 0, 3000, 3, 2),
 (22, '2017-06-01', '2017-06-01', 'KKL220617', 7, 0, 0, 0, 0, 0, 5, 2, 0, 3000, 3, 2),
-(23, '2017-06-01', '2017-06-03', 'KKL230617', 7, 0, 0, 0, 0, 0, 1, 2, 0, 2000, 1, 1);
+(24, '2017-06-07', '2017-06-02', 'KKL230617', 2, 0, 0, 0, 0, 0, 5, 2, 0, 4000, 3, 5),
+(25, '2017-07-05', '2017-07-06', 'KKL250717', 1, 0, 0, 0, 0, 0, 1, 2, 0, 2000, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -349,8 +376,11 @@ CREATE TABLE `shipment_status` (
 --
 
 INSERT INTO `shipment_status` (`shipment_status_id`, `shipment_status_value`) VALUES
-(1, 'ยังไม่ขนส่งสินค้า'),
-(2, 'ขนส่งสินค้าแล้ว');
+(1, '<strong style=\'color:red;\'>ยังไม่ขนส่งสินค้า</strong>'),
+(2, '<strong style=\'color:gray;\'>รอใบนำส่งสินค้า</strong>'),
+(3, '<strong style=\'color:orange;\'>ออกใบกำกับภาษี</strong>'),
+(4, '<strong style=\'color:#A46400;\'>ออกใบวางบิล/ใบแจ้งหนี้</strong>'),
+(5, '<strong style=\'color:green;\'>ขนส่งสินค้าแล้ว</strong>');
 
 --
 -- Indexes for dumped tables
@@ -397,6 +427,12 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `district`
   ADD PRIMARY KEY (`district_id`);
+
+--
+-- Indexes for table `document`
+--
+ALTER TABLE `document`
+  ADD PRIMARY KEY (`document_id`);
 
 --
 -- Indexes for table `employee`
@@ -447,7 +483,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `billing`
 --
 ALTER TABLE `billing`
-  MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `car`
 --
@@ -472,12 +508,17 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `district`
 --
 ALTER TABLE `district`
-  MODIFY `district_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `district_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `document`
+--
+ALTER TABLE `document`
+  MODIFY `document_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `product`
 --
@@ -497,12 +538,12 @@ ALTER TABLE `routes`
 -- AUTO_INCREMENT for table `shipment`
 --
 ALTER TABLE `shipment`
-  MODIFY `shipment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `shipment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `shipment_status`
 --
 ALTER TABLE `shipment_status`
-  MODIFY `shipment_status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `shipment_status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

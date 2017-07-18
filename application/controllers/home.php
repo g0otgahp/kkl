@@ -207,6 +207,7 @@ class home extends CI_Controller {
 		$value = array(
 			'Result' => array(
 				'customer' => $this->Customer_model->customer_detail($customer_id),
+				'document' => $this->Customer_model->document_detail($customer_id),
 			),
 			'View' => 'customer_update'
 		);
@@ -307,6 +308,7 @@ class home extends CI_Controller {
 		$value = array(
 			'Result' => array(
 				'employee' => $this->Employee_model->employee_detail($employee_id),
+				'document' => $this->Employee_model->document_detail($employee_id),
 			),
 			'View' => 'employee_update'
 		);
@@ -573,6 +575,14 @@ class home extends CI_Controller {
 		$data['billing'] = $this->Billing_model->billing_peper($billing_code);
 
 		$this->load->view('income_tax3',$data);
+	}
+	public function document_delete()
+	{
+		$document_id = $this->uri->segment(3);
+		$this->Customer_model->document_delete($document_id);
+		// redirect('home/customer_list');
+		$url = $_SERVER['HTTP_REFERER'];
+		echo "<script>window.location.href='$url';</script>";
 	}
 
 

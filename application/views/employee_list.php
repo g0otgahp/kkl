@@ -105,6 +105,12 @@
                       </td>
                     </tr>
                     <tr>
+                      <td>เบอร์โทรศัพท์ติดต่อสำรอง</td>
+                      <td>
+                        <input autocomplete="off" name="employee_tel2" type="text" class="md-input"  placeholder="กรอก เบอร์โทรศัพท์ติดต่อ"/>
+                      </td>
+                    </tr>
+                    <tr>
                       <td>วันเกิด</td>
                       <td>
                         <input autocomplete="off" name="employee_birthday" type="text" class="Kdatepicker" placeholder="กรอกวันเกิด" />
