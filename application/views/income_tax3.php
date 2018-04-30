@@ -4,11 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>เอกสาร ภงด 3</title>
 <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="<?php echo base_url('theme/assets/css/main.min.css')?>" media="all">
 
 </head>
+
 <style>
 body {
-  background: rgb(204,204,204); 
+  background: rgb(204,204,204);
 }
 page {
   background: white;
@@ -18,13 +20,13 @@ page {
   margin-bottom: 0.5cm;
   box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
 }
-page[size="A4"] {  
+page[size="A4"] {
   width: 21cm;
-  height: 29.7cm; 
+  height: 29.7cm;
 }
 page[size="A4"][layout="portrait"] {
   width: 29.7cm;
-  height: 21cm;  
+  height: 21cm;
 }
 page[size="A3"] {
   width: 29.7cm;
@@ -32,7 +34,7 @@ page[size="A3"] {
 }
 page[size="A3"][layout="portrait"] {
   width: 42cm;
-  height: 29.7cm;  
+  height: 29.7cm;
 }
 page[size="A5"] {
   width: 14.8cm;
@@ -40,7 +42,7 @@ page[size="A5"] {
 }
 page[size="A5"][layout="portrait"] {
   width: 21cm;
-  height: 14.8cm;  
+  height: 14.8cm;
 }
 @media print {
   body, page {
@@ -55,7 +57,25 @@ hr.style-two {
 }
 </style>
 
+
+<style media="print">
+  .no-print{
+    display: none;
+  }
+</style>
 <body>
+  <div class="row" style="    position: fixed;
+      right: 5%;
+      top: 0%;">
+    <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center ' style="margin-top:20px">
+      <form class='form-group'>
+
+          <button type='button' class='md-btn md-btn-lg md-btn-primary md-btn-wave-light no-print' onclick="window.print();"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> พิมพ์เอกสาร</button>
+
+      </form>
+
+    </div>
+  </div>
 <!--<page size="A4"></page>
 <page size="A4"></page>
 <page size="A4" layout="portrait"></page>
@@ -293,7 +313,6 @@ hr.style-two {
 <div style="border:solid 1px #00a6ff;-moz-border-radius: 5px;-webkit-border-radius: 5px; border-radius: 5px; padding:1%; margin:1%; float:left; width:38%; font-size:0.55em;">
 คำเตือน   ผู้มีหน้าที่ออกหนังสือรับรองการหักภาษี ณ ที่จ่าย<p></p>ฝ่าฝืนไม่ปฏิบัติตามมาตรา 50 ทวิ แห่งประมวลรัษฎากร<p></p>ต้องรับโทษทางอาญาตามมาตรา 25 แห่งประมวลรัษฎากร
 <p></p><br>
-
 </div>
 <div style="border:solid 1px #00a6ff;-moz-border-radius: 5px;-webkit-border-radius: 5px; border-radius: 5px; padding:1%; margin-left:42%; margin-top:2%; width:55%; font-size:0.55em;" align="center">
 ขอรับรองว่าข้อความและตัวเลขดังกล่าวข้างต้นถูกต้องตรงกับความจริงทุกประการ
@@ -304,7 +323,6 @@ sadasd
 <p></p>
 (  วัน   เดือน   ปี  ที่ออกหนังสือรับรอง)
 </div>
-
 </page>
 <!--<page size="A3"></page>
 <page size="A3" layout="portrait"></page>-->

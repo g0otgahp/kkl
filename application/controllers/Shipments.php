@@ -66,8 +66,17 @@ class Shipments extends CI_Controller {
 	public function shipments_update_status()
 	{
 		$input = $this->input->post();
+		$customer_id = $input['customer_id'];
+		unset($input['customer_id']);
 		$this->Shipments_model->shipments_update($input);
-		redirect('home/shipments_detail/'.$input['shipment_code']);
+
+		if ($input['shipment_status'] == 4) {
+			redirect('home/document_billing/'.$customer_id);
+		} elseif ($input['shipment_status'] == 3) {
+			redirect('home/income_tax_list');
+		} else {
+			redirect('home/shipments_detail/'.$input['shipment_code']);
+		}
 	}
 
 }

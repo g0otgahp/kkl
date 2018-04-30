@@ -3,6 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>ใบเสร็จรับเงิน</title>
+<link rel="stylesheet" href="<?php echo base_url('theme/assets/css/main.min.css')?>" media="all">
+
 </head>
 <style>
 body {
@@ -69,8 +71,24 @@ $month =  array(
 	'12' => "ธันวาคม",
 );
 ?>
-
+<style media="print">
+  .no-print{
+    display: none;
+  }
+</style>
 <body>
+	<div class="row" style="    position: fixed;
+			right: 5%;
+			top: 0%;">
+		<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center ' style="margin-top:20px">
+			<form class='form-group'>
+
+					<button type='button' class='md-btn md-btn-lg md-btn-primary md-btn-wave-light no-print' onclick="window.print();"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> พิมพ์เอกสาร</button>
+
+			</form>
+
+		</div>
+	</div>
 <!--<page size="A4"></page>
 <page size="A4"></page>
 <page size="A4" layout="portrait"></page>

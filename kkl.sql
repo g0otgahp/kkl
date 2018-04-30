@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2017 at 10:03 PM
+-- Generation Time: Aug 09, 2017 at 11:45 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -76,7 +76,12 @@ INSERT INTO `billing` (`billing_id`, `billing_date`, `billing_group`, `billing_c
 (22, '2017-06-01', '2017-06', 'IN001-0660', 'KKL220617', 5, '2017-06-01', 3),
 (23, '2017-07-05', '2017-07', 'IN001-0760', 'KKL230617', 5, '2017-07-05', 3),
 (24, '2017-07-05', '2017-07', 'IN002-0760', 'KKL250717', 1, '2017-07-05', 3),
-(25, '2017-07-05', '2017-07', 'IN003-0760', 'KKL173117', 1, '2017-07-05', 3);
+(25, '2017-07-05', '2017-07', 'IN003-0760', 'KKL173117', 1, '2017-07-05', 3),
+(26, '2017-07-26', '2017-07', 'IN004-0760', 'KKL2017000851', 1, '2017-07-26', 3),
+(27, '2017-08-09', '2017-08', 'IN001-0860', 'KKL200517', 1, '0000-00-00', 1),
+(28, '2017-08-09', '2017-08', 'IN002-0860', 'KKL170531120957', 1, '0000-00-00', 1),
+(29, '2017-08-09', '2017-08', 'IN002-0860', '234345', 1, '0000-00-00', 1),
+(30, '2017-08-09', '2017-08', 'IN004-0860', 'KKL270817', 5, '2017-08-09', 3);
 
 -- --------------------------------------------------------
 
@@ -213,10 +218,9 @@ CREATE TABLE `document` (
 --
 
 INSERT INTO `document` (`document_id`, `document_name`, `document_link`, `customer_id`, `employee_id`) VALUES
-(31, 'แบบใบลาป่วย ลากิจ ฯ.pdf', '20170718141020.pdf', 1, 0),
-(35, 'แบบใบลาป่วย ลากิจ ฯ.pdf', '20170718184738.pdf', 0, 4),
-(36, 'images.jpg', '20170718184819.jpg', 0, 4),
-(37, 'flat_person1-300x74-1.png', '20170718184918.png', 0, 5);
+(4, 'ภาคผนวก ก.pdf', '20170726122634.pdf', 5, 0),
+(5, 'หน้าปกออกฝึก.pdf', '20170726122716.pdf', 5, 0),
+(6, 'หนังสือสำคัญ.pdf', '20170726122735.pdf', 5, 0);
 
 -- --------------------------------------------------------
 
@@ -229,7 +233,7 @@ CREATE TABLE `employee` (
   `employee_name` varchar(100) NOT NULL,
   `employee_idcard` varchar(15) NOT NULL,
   `employee_tel` varchar(15) NOT NULL,
-  `employee_tel2` varchar(15) NOT NULL,
+  `employee_tel2` varchar(11) NOT NULL,
   `employee_birthday` date NOT NULL,
   `employee_address` text NOT NULL,
   `employee_status` int(11) NOT NULL
@@ -262,8 +266,7 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`product_id`, `product_name`, `product_detail`) VALUES
 (2, 'หลอด LED T8 ขนาด 18Watt', 'หลอด LED T8 ขนาด 18Watt11'),
-(3, 'หลอดไฟ LED Bulb รุ่น Premium ขนาด 9W', NULL),
-(4, 'นมผง 40c', 'นมผง 40c');
+(3, 'หลอดไฟ LED Bulb รุ่น Premium ขนาด 9W', NULL);
 
 -- --------------------------------------------------------
 
@@ -358,7 +361,10 @@ INSERT INTO `shipment` (`shipment_id`, `shipment_date_make`, `shipment_date`, `s
 (20, '2017-05-31', '2017-06-01', 'KKL200517', 5, 0, 0, 0, 0, 0, 1, 2, 0, 2000, 1, 2),
 (22, '2017-06-01', '2017-06-01', 'KKL220617', 7, 0, 0, 0, 0, 0, 5, 2, 0, 3000, 3, 2),
 (24, '2017-06-07', '2017-06-02', 'KKL230617', 2, 0, 0, 0, 0, 0, 5, 2, 0, 4000, 3, 5),
-(25, '2017-07-05', '2017-07-06', 'KKL250717', 1, 0, 0, 0, 0, 0, 1, 2, 0, 2000, 1, 5);
+(25, '2017-07-05', '2017-07-06', 'KKL250717', 1, 0, 0, 0, 0, 0, 1, 2, 0, 2000, 1, 5),
+(26, '2017-07-01', '2017-07-01', 'KKL260817', 1, 0, 0, 0, 0, 0, 1, 2, 0, 2000, 1, 2),
+(27, '2017-08-09', '2017-08-09', 'KKL270817', 2, 0, 0, 0, 0, 0, 5, 2, 0, 3000, 3, 3),
+(28, '2017-08-09', '2017-08-10', 'KKL280817', 1, 0, 0, 0, 0, 0, 1, 3, 0, 5000, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -377,7 +383,7 @@ CREATE TABLE `shipment_status` (
 
 INSERT INTO `shipment_status` (`shipment_status_id`, `shipment_status_value`) VALUES
 (1, '<strong style=\'color:red;\'>ยังไม่ขนส่งสินค้า</strong>'),
-(2, '<strong style=\'color:gray;\'>รอใบนำส่งสินค้า</strong>'),
+(2, '<strong style=\'color:gray;\'>รอขนส่ง</strong>'),
 (3, '<strong style=\'color:orange;\'>ออกใบกำกับภาษี</strong>'),
 (4, '<strong style=\'color:#A46400;\'>ออกใบวางบิล/ใบแจ้งหนี้</strong>'),
 (5, '<strong style=\'color:green;\'>ขนส่งสินค้าแล้ว</strong>');
@@ -483,7 +489,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `billing`
 --
 ALTER TABLE `billing`
-  MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `car`
 --
@@ -513,12 +519,12 @@ ALTER TABLE `district`
 -- AUTO_INCREMENT for table `document`
 --
 ALTER TABLE `document`
-  MODIFY `document_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `document_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `product`
 --
@@ -538,7 +544,7 @@ ALTER TABLE `routes`
 -- AUTO_INCREMENT for table `shipment`
 --
 ALTER TABLE `shipment`
-  MODIFY `shipment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `shipment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `shipment_status`
 --

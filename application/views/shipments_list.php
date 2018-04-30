@@ -65,7 +65,6 @@ date_default_timezone_set('Asia/Bangkok');
 			//$this->db->join('tms_car','tms_car.car_id = tms_around.around_car');
         $query = $this->db->get('shipment',3);
 				$shipment = $query->result_array();
-
 		?>
         <?php if(@$shipment[0]['shipment_id']!=""){ ?>
         <span style="color:red;">
@@ -73,10 +72,16 @@ date_default_timezone_set('Asia/Bangkok');
         <?php foreach($shipment as $shipment){ ?>
     	<div style="font-size:1em;" align="center">
 			+ <a href="<?php echo site_url('home/shipments_detail')?>/<?php echo $shipment['shipment_code']?>"><?php echo $shipment['shipment_code']?></a>
+				<?php if ($shipment['shipment_status'] != 5): ?>
+					<span style="color:red;">(ยังไม่เสร็จ)</span>
+					<?php else: ?>
+						<span style="color:green;">(ขนส่งเสร็จสิ้น)</span>
+				<?php endif; ?>
         </div>
         <?php } ?>
         </span>
         <?php } ?>
+
           </div>
         </div>
         <?php } ?>

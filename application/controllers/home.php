@@ -5,12 +5,15 @@ class home extends CI_Controller {
 
 	public function LoadPage($value){
 		$data = $value['Result'];
+
 		$this->load->view('admin/template/header', $data);
 		$this->load->view('admin/template/menu');
 		$this->load->view($value['View']);
-		if ($value['View'] !='Home') {
+
+		if ($value['View'] !='home') {
 			$this->load->view('admin/template/footer');
 		}
+
 	}
 
 	public function index()
@@ -431,9 +434,13 @@ class home extends CI_Controller {
 	}
 	public function document_billing()
 	{
-		$shipment_customer = $this->input->post('shipment_customer');
-		$data['customer'] = $this->Customer_model->customer_list();
-
+		$id = $this->uri->segment(3);
+		if ($id != '') {
+			$shipment_customer = $this->uri->segment(3);
+		} else {
+			$shipment_customer = $this->input->post('shipment_customer');
+		}
+		
 		if($shipment_customer==""){
 			$data['check'] = 0;
 			$data['shipments_history'] = array();

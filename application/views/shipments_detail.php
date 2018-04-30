@@ -79,6 +79,7 @@
 							<?php if ($shipments[0]['shipment_status_id'] != 5): ?>
 							<?php echo form_open('Shipments/shipments_update_status') ?>
 							<input type='hidden' name='shipment_id' value='<?php echo $shipments[0]['shipment_id']?>'>
+							<input type='hidden' name='customer_id' value='<?php echo $shipments[0]['customer_id']?>'>
 							<input type='hidden' name='shipment_code' value='<?php echo $shipments[0]['shipment_code']?>'>
 							<select required class="md-input" data-uk-tooltip="{pos:'top'}" title="เปลี่ยนสถานะ" name="shipment_status" onchange="this.form.submit()">
 								<option value="<?php echo $shipments[0]['shipment_status_id']?>"><?php echo $shipments[0]['shipment_status_value']?></option>

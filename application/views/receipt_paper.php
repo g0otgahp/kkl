@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>ใบเสร็จรับเงิน</title>
+<title>ใบวางบิล</title>
+<link rel="stylesheet" href="<?php echo base_url('theme/assets/css/main.min.css')?>" media="all">
+
 </head>
 <style>
 body {
@@ -52,15 +54,31 @@ hr.style-two {
 	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 </style>
-
+<style media="print">
+  .no-print{
+    display: none;
+  }
+</style>
 <body>
+	<div class="row" style="    position: fixed;
+			right: 5%;
+			top: 0%;">
+		<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center ' style="margin-top:20px">
+			<form class='form-group'>
+
+					<button type='button' class='md-btn md-btn-lg md-btn-primary md-btn-wave-light no-print' onclick="window.print();"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> พิมพ์เอกสาร</button>
+
+			</form>
+
+		</div>
+	</div>
 <!--<page size="A4"></page>
 <page size="A4"></page>
 <page size="A4" layout="portrait"></page>
 <page size="A5"></page>-->
 <page size="A5" layout="portrait">
 	<div style="float:left; width:25%; font-size:0.8em;"><table border="1"><tr><td><strong> FM-MK-01 <br> ปรับปรุงครั้งที่ <br> เริ่มใช้ 31 ธ.ค. 58 <br> ยกเลิกวันที่ : ยังไม่มี </td></tr></table></strong></div>
-  <div style="float:left; width:50%;"><strong style="font-size:1.35em;">ใบเสร็จรับเงิน</strong> <br>
+  <div style="float:left; width:50%;"><strong style="font-size:1.35em;">ใบวางบิล</strong> <br>
     <strong style="font-size:0.8em;">บริษัท ขอนแก่น ลำเลียง จำกัด ( สำนักงานใหญ่ )</strong> <br>
     <strong style="font-size:0.8em;">เลขที่ 555/27 ถ.เหล่านาดี ต.เมืองเก่า อ.เมือง จ.ขอนแก่น 40000 เลขที่เสียภาษี 0405557002797</strong> </div>
 		<div style="float:left; width:15%;"> <img src="<?php echo base_url()?>theme/assets/img/logo.jpg" width="180"> </div>

@@ -56,8 +56,8 @@
                 <?php } ?>
               </div></td>
               <td><div align="center">
-                <a href="<?php echo site_url('home/income_tax53')?>/<?php echo $income_tax_list['billing_id']?>" target="_blank"><button type="button" class="md-btn md-btn-small md-btn-success md-btn-wave-light" <?php echo @$disabled ?>>ภงด 53</button></a>
-                <a href="<?php echo site_url('home/income_tax3')?>/<?php echo $income_tax_list['billing_id']?>" target="_blank"><button type="button" class="md-btn md-btn-small md-btn-primary md-btn-wave-light" <?php echo @$disabled ?>>ภงด 3</button></a></div></td>
+                <a href="<?php echo site_url('home/income_tax53')?>/<?php echo $income_tax_list['billing_id']?>" target="_blank"><button type="button" class="md-btn md-btn-small md-btn-success md-btn-wave-light" >ภงด 53</button></a>
+                <a href="<?php echo site_url('home/income_tax3')?>/<?php echo $income_tax_list['billing_id']?>" target="_blank"><button type="button" class="md-btn md-btn-small md-btn-primary md-btn-wave-light" >ภงด 3</button></a></div></td>
             </tr>
             <?php $i++ ?>
             <?php } ?>

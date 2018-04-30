@@ -15,7 +15,7 @@
 |
 */
 // $config['base_url']	= 'http://www.esanstudio.com/kkl/';
-$config['base_url']	= 'http://localhost/kkl/';
+$config['base_url']	= 'http://localhost/kkl_new/';
 
 /*
 |--------------------------------------------------------------------------
